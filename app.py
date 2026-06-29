@@ -342,7 +342,7 @@ styled = (
         "Δ pp": fmt_delta,
         "Var %": fmt_var,
     })
-    .applymap(color_delta, subset=["Δ pp"])
+    .map(color_delta, subset=["Δ pp"])
     .set_properties(**{"background-color": "#1E2125", "color": "#FFFFFF"})
     .set_table_styles([
         {"selector": "thead th", "props": [
