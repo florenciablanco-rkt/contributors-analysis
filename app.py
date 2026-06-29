@@ -6,18 +6,16 @@ from attribution import parse_journeys, compute_median_hours, compute_credits, b
 
 st.set_page_config(
     page_title="Contributors Analysis — Rocket Lab",
-    page_icon="https://i.imgur.com/placeholder.png",
+    page_icon="📊",
     layout="wide",
 )
 
 # ── Rocket Lab design tokens ──────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800;900&display=swap');
-
 /* Base */
 html, body, [class*="css"] {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
 /* Hide Streamlit default header */
