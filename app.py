@@ -57,12 +57,9 @@ with st.expander("📋 Columnas requeridas en el CSV"):
     | `Contributor 3 Media Source` | Canal que asistió (3er touchpoint previo) |
     | `Contributor 3 Touch Time` | Timestamp del contributor 3 |
 
-    > **El CSV original de AppsFlyer puede pesar +600 MB.** Para reducirlo a ~20 MB antes de subir,
-    > corrés el script incluido en el repo:
-    > ```
-    > python3 filter_columns.py archivo.csv
-    > ```
-    > Genera `archivo_filtered.csv` con solo estas columnas.
+    > **El CSV original de AppsFlyer puede pesar +600 MB.** El uploader tiene un límite de 200 MB,
+    > así que hay que reducirlo antes de subir. Podés pedirle a **Claude** que lo haga por vos:
+    > compartile el archivo y decile que filtre las columnas de la tabla de arriba.
     """)
 
 uploaded = st.file_uploader(
