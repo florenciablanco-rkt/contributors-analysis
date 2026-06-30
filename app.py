@@ -39,6 +39,32 @@ st.markdown("""
 
 # ── Upload ────────────────────────────────────────────────────────────────────
 st.markdown('<div class="rl-label">Dataset</div>', unsafe_allow_html=True)
+
+with st.expander("📋 Columnas requeridas en el CSV"):
+    st.markdown("""
+    El archivo debe ser un export de installs de **AppsFlyer** con estas columnas:
+
+    | Columna | Descripción |
+    |---|---|
+    | `AppsFlyer ID` | Identificador único del usuario |
+    | `Media Source` | Canal que cerró el install (last touch) |
+    | `Attributed Touch Time` | Timestamp del último touchpoint |
+    | `Install Time` | Timestamp del install |
+    | `Contributor 1 Media Source` | Canal que asistió (1er touchpoint previo) |
+    | `Contributor 1 Touch Time` | Timestamp del contributor 1 |
+    | `Contributor 2 Media Source` | Canal que asistió (2do touchpoint previo) |
+    | `Contributor 2 Touch Time` | Timestamp del contributor 2 |
+    | `Contributor 3 Media Source` | Canal que asistió (3er touchpoint previo) |
+    | `Contributor 3 Touch Time` | Timestamp del contributor 3 |
+
+    > **El CSV original de AppsFlyer puede pesar +600 MB.** Para reducirlo a ~20 MB antes de subir,
+    > corrés el script incluido en el repo:
+    > ```
+    > python3 filter_columns.py archivo.csv
+    > ```
+    > Genera `archivo_filtered.csv` con solo estas columnas.
+    """)
+
 uploaded = st.file_uploader(
     "Subí el CSV de installs (ya filtrado con filter_columns.py)",
     type="csv",
