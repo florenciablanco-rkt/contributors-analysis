@@ -85,8 +85,8 @@ median_h   = compute_median_hours(journeys)
 st.markdown('<div class="rl-label" style="margin-top:16px;">Overview</div>', unsafe_allow_html=True)
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Total installs",         f"{total:,}")
-c2.metric("Multitouch",             f"{multitouch:,}",  f"{multitouch/total*100:.1f}%")
-c3.metric("Single touch",           f"{single:,}",      f"{single/total*100:.1f}%")
+c2.metric("Multitouch",             f"{multitouch:,}",  f"{multitouch/total*100:.1f}% del total", delta_color="off")
+c3.metric("Single touch",           f"{single:,}",      f"{single/total*100:.1f}% del total",    delta_color="off")
 c4.metric("Post-install filtrados", f"{skipped:,}")
 
 st.divider()
@@ -98,6 +98,13 @@ with col_s:
     half_life = st.slider(
         "HALF_LIFE — decay de contributors (horas)",
         min_value=1, max_value=72, value=24, step=1,
+        help=(
+            "Controla qué tan rápido pierde peso un contributor según su distancia al install. "
+            "Se usa en la fórmula 2^(−horas/HALF_LIFE): a las HALF_LIFE horas, el contributor "
+            "ya perdió el 50% de su peso. "
+            "Valor bajo (ej: 6h) = decay agresivo, solo importan los touchpoints muy cercanos al install. "
+            "Valor alto (ej: 48h) = decay suave, los touchpoints lejanos siguen teniendo peso relevante."
+        ),
     )
 with col_m:
     st.markdown(f"""
