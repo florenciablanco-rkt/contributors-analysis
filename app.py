@@ -73,8 +73,7 @@ if not uploaded:
 with st.spinner("Parseando journeys..."):
     content = uploaded.read().decode("utf-8-sig")
     reader  = csv.DictReader(io.StringIO(content))
-    rows    = list(reader)
-    journeys, skipped = parse_journeys(rows)
+    journeys, skipped = parse_journeys(reader)
 
 total      = len(journeys)
 multitouch = sum(1 for j in journeys.values() if j["contributors"])
