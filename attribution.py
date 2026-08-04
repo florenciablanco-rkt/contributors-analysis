@@ -15,7 +15,8 @@ def parse_journeys(rows):
         last_t  = r["Attributed Touch Time"].strip()
 
         try:
-            t_last = datetime.strptime(last_t[:19], "%Y-%m-%d %H:%M:%S")
+            fmt = "%Y-%m-%d %H:%M:%S" if len(last_t) >= 19 else "%Y-%m-%d %H:%M"
+            t_last = datetime.strptime(last_t[:19], fmt)
         except Exception:
             t_last = None
 
